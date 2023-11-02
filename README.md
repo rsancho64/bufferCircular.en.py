@@ -1,7 +1,6 @@
 # bufferCircular.en.py
 
-un buffer circular implementado 
-sobre un array lineal (una lista python)
+Un buffer circular implementado sobre un array lineal (una lista python)
 
 Ilustracion de la evolucion:
 
@@ -31,7 +30,7 @@ Se expresan (y no se manejan) dos excepciones:
     intento de entrada cuando esta lleno
 
 ```python
-tam = 9
+tam = 5
 ```
 
 - [ ] programar la creacion del buffer con append(none)
