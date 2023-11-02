@@ -52,3 +52,5 @@ def entrada (buffer, dato):
 def salida (buffer):
     return item
 ```
+
+- [ ] investigar: *aritmética modular* en **indices** para *buffers circulares*.
