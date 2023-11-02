@@ -1,92 +1,49 @@
 #! /usr/bin/python3
 
-# globales globales globales globales globales !!!
-# solo [podemos manejar con ellas] un buffer:
-tam = 5
-nextIN = 0
-nextOUT = None
+class circularBuff:
 
-def entrada(buffer, dato):
-    """acoplada a globales"""
-    buffer[nextIN] = dato
-    if not nextOUT: nextOUT = nextIN
-    return nextIN+1 
-    pass
+    def __init__(self,tam) -> None:
+        self.nextIn = 0
+        self.nextOut = None
+        self.buffer = []
+        for i in range(tam):
+            self.buffer.append(None)
 
-def salida(buffer):
-    """acoplada a globales"""
-    answer = buffer[nextOUT]
-    buffer[nextOUT] = None   ## solo para depurar
-    nextOUT+1
-    return answer
+    def __str__(self) -> str:
+        return self.buffer.__str__()
 
-i = 0 #global
-def avanzaEnEspacioCircular(tam):
-    nextPos = (i+1)%tam   # esencia del avance circular: coregir %tam
-    return nextPos
+    def entrada(self, dato):
+        print(f"{self} -> ", end="")
+        self.buffer[self.nextIn] = dato
+        if not self.nextOut: self.nextOut = self.nextIn
+        self.nextIn + 1
+        print(f"{self}")
 
-def nextPos(tam,pos):
-    return (pos+1)%tam  # esencia del avance circular: coregir %tam
+    def salida(self,buffer):
+        print(f"{self} -> ", end="") 
+        item = buffer[self.nextOut]
+        self.nextOut+1
+        print(f"{self} -> {item}")        
+        return item
+
+    def esLleno(self) -> bool: 
+        pass
+
+# def avanzaEnEspacioCircular(tam):
+#     nextPos = (i+1)%tam   # esencia del avance circular: coregir %tam
+#     return nextPos
+
+# def nextPos(tam,pos):
+#     return (pos+1)%tam  # esencia del avance circular: coregir %tam
 
 if __name__ == '__main__':
 
     # crear el buffer -de capacid variable-:
+    cB1 = circularBuff(4)
+    print(cB1)
 
-    buffer = []
-    for i in range(tam):
-        buffer.append(None)
-    print(buffer)
-
-    # estudio del avance circular
-    i = 0
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    i = avanzaEnEspacioCircular(tam)
-    print(f"i: {i}")
-
-    print()
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
-
-    i = nextPos(tam,i)
-    print(f"i: {i}")
+    cB1.entrada(11)
+    cB1.entrada(22)  # FIX 22 EN MALA POSICION
 
     # usar el buffer
 
@@ -101,7 +58,6 @@ if __name__ == '__main__':
 
     # item = salida(buffer)
     # print(buffer, item)
-
 
     # ## desbordaria:
     # # nextIN = entrada(buffer, 11)
