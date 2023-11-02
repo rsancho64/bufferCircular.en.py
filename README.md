@@ -42,8 +42,7 @@ tam = 9
 nextIN = 0
 nextOUT = None
 ```
-
-  - [ ] dos funciones para manejarlos: `nextIN` y `nextOUT`
+  - [ ] dos funciones para manejarlos: `entrada` y `salida`
 
 ```python
 def entrada (buffer, dato):
