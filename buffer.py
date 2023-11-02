@@ -8,15 +8,17 @@ class circularBuff:
         self.buffer = []
         for i in range(tam):
             self.buffer.append(None)
+        print(self)
 
     def __str__(self) -> str:
-        return self.buffer.__str__()
+        return f"{self.buffer.__str__(), self.nextIn, self.nextOut}"
 
     def entrada(self, dato):
         print(f"{self} -> ", end="")
         self.buffer[self.nextIn] = dato
-        if not self.nextOut: self.nextOut = self.nextIn
-        self.nextIn + 1
+        if not self.nextOut: 
+            self.nextOut = 1
+        self.nextIn += 1
         print(f"{self}")
 
     def salida(self,buffer):
@@ -43,7 +45,7 @@ if __name__ == '__main__':
     print(cB1)
 
     cB1.entrada(11)
-    cB1.entrada(22)  # FIX 22 EN MALA POSICION
+    cB1.entrada(22)  # FIX: 22 EN MALA POSICION: sobreescribe al 11
 
     # usar el buffer
 
